@@ -1,0 +1,1999 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+  }
+
+  :root {
+    --primary: #0D7377;
+    --primary-light: #14BDAC;
+    --primary-ultra: #E1F5EE;
+    --navy: #1A2E4A;
+    --accent: #F0A500;
+    --text1: #0F172A;
+    --text2: #475569;
+    --text3: #94A3B8;
+    --border: #E2E8F0;
+    --surface: #F8FAFC;
+    --white: #FFFFFF;
+    --r: 10px;
+    --r-lg: 16px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 60px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--primary);
+    cursor: pointer
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 4px
+  }
+
+  .nav-link {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text2);
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all .15s
+  }
+
+  .nav-link:hover {
+    background: var(--surface);
+    color: var(--text1)
+  }
+
+  .nav-link.active {
+    background: var(--primary-ultra);
+    color: var(--primary);
+    font-weight: 500
+  }
+
+  .nav-cta {
+    padding: 7px 18px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: opacity .15s
+  }
+
+  .nav-cta:hover {
+    opacity: .85
+  }
+
+  /* PAGES */
+  .page {
+    display: none;
+    min-height: calc(100vh - 60px);
+    animation: fadeIn .2s ease
+  }
+
+  .page.active {
+    display: block
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px)
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+
+  /* ── LANDING ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(20, 189, 172, .08);
+    border-radius: 50%;
+    top: -250px;
+    right: -150px;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(13, 115, 119, .05);
+    border-radius: 50%;
+    bottom: -150px;
+    left: -100px;
+  }
+
+  .hero {
+    padding: 80px 64px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-ultra);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1.1;
+    color: var(--text1);
+    margin-bottom: 20px
+  }
+
+  .hero-title span {
+    color: var(--primary)
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    font-weight: 300
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap
+  }
+
+  .btn-primary {
+    padding: 13px 28px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: var(--r);
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all .15s
+  }
+
+  .btn-primary:hover {
+    background: #0A5C52
+  }
+
+  .btn-outline {
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    border-radius: var(--r);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s
+  }
+
+  .btn-outline:hover {
+    background: var(--primary-ultra)
+  }
+
+  .hero-visual {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+  }
+
+  .skill-card-mini {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px
+  }
+
+  .skill-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0
+  }
+
+  .skill-info {
+    flex: 1
+  }
+
+  .skill-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 2px
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    color: var(--text3)
+  }
+
+  .match-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--primary-ultra);
+    color: var(--primary)
+  }
+
+  .features {
+    padding: 60px 64px;
+    background: var(--surface);
+    border-top: 1px solid var(--border)
+  }
+
+  .features-inner {
+    max-width: 1100px;
+    margin: 0 auto
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 8px
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 34px;
+    color: var(--text1);
+    margin-bottom: 40px
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px
+  }
+
+  .feature-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 24px
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--primary-ultra);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    font-size: 20px;
+    color: var(--primary)
+  }
+
+  .feature-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 6px
+  }
+
+  .feature-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto
+  }
+
+  .stat-cell {
+    background: var(--white);
+    padding: 28px;
+    text-align: center
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--primary);
+    margin-bottom: 4px
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text2)
+  }
+
+  .stats-section {
+    padding: 40px 64px;
+    border-top: 1px solid var(--border)
+  }
+
+  /* ── DASHBOARD ── */
+  .dash-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100vh - 60px)
+  }
+
+  .sidebar {
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+  }
+
+  .sidebar-section {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 12px 12px 6px;
+    margin-top: 8px
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text2);
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: all .15s
+  }
+
+  .sidebar-item:hover {
+    background: var(--surface);
+    color: var(--text1)
+  }
+
+  .sidebar-item.active {
+    background: var(--primary-ultra);
+    color: var(--primary);
+    font-weight: 500
+  }
+
+  .sidebar-item i {
+    font-size: 16px;
+    width: 20px
+  }
+
+  .sidebar-badge {
+    margin-left: auto;
+    background: var(--primary);
+    color: #fff;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 10px
+  }
+
+  .dash-main {
+    padding: 32px;
+    background: var(--surface)
+  }
+
+  .dash-header {
+    margin-bottom: 28px
+  }
+
+  .dash-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 4px
+  }
+
+  .dash-sub {
+    font-size: 14px;
+    color: var(--text2)
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px
+  }
+
+  .metric {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 18px
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 8px
+  }
+
+  .metric-val {
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text1)
+  }
+
+  .metric-sub {
+    font-size: 11px;
+    color: var(--primary);
+    margin-top: 2px
+  }
+
+  .dash-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px
+  }
+
+  .dash-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 20px
+  }
+
+  .dash-card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+
+  .dash-card-title a {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 400;
+    cursor: pointer
+  }
+
+  .request-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border)
+  }
+
+  .request-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0
+  }
+
+  .req-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0
+  }
+
+  .req-info {
+    flex: 1
+  }
+
+  .req-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text1)
+  }
+
+  .req-skill {
+    font-size: 12px;
+    color: var(--text2)
+  }
+
+  .req-actions {
+    display: flex;
+    gap: 6px
+  }
+
+  .req-btn {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all .15s
+  }
+
+  .req-btn.accept {
+    background: var(--primary-ultra);
+    color: var(--primary);
+    border-color: var(--primary-ultra)
+  }
+
+  .req-btn.accept:hover {
+    background: var(--primary);
+    color: #fff
+  }
+
+  .req-btn.decline {
+    background: transparent;
+    color: var(--text3);
+    border-color: var(--border)
+  }
+
+  .session-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border)
+  }
+
+  .session-item:last-child {
+    border-bottom: none
+  }
+
+  .session-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0
+  }
+
+  .session-info {
+    flex: 1
+  }
+
+  .session-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text1)
+  }
+
+  .session-time {
+    font-size: 12px;
+    color: var(--text2)
+  }
+
+  .session-status {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 500
+  }
+
+  /* ── PROFILE ── */
+  .profile-layout {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 32px
+  }
+
+  .profile-hero {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 28px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start
+  }
+
+  .profile-avatar-big {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 500;
+    flex-shrink: 0;
+    background: #E1F5EE;
+    color: var(--primary)
+  }
+
+  .profile-name {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 4px
+  }
+
+  .profile-bio {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    max-width: 500px
+  }
+
+  .profile-meta {
+    display: flex;
+    gap: 16px
+  }
+
+  .profile-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text2)
+  }
+
+  .profile-meta-item i {
+    font-size: 14px;
+    color: var(--text3)
+  }
+
+  .profile-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px
+  }
+
+  .profile-edit-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+    transition: all .15s
+  }
+
+  .profile-edit-btn:hover {
+    background: var(--primary-ultra)
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px
+  }
+
+  .profile-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 22px
+  }
+
+  .profile-section-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px
+  }
+
+  .profile-section-title i {
+    font-size: 15px;
+    color: var(--primary)
+  }
+
+  .skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 3px
+  }
+
+  .skill-pill.teach {
+    background: var(--primary-ultra);
+    color: var(--primary)
+  }
+
+  .skill-pill.learn {
+    background: #EEF2FF;
+    color: #4F46E5
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border)
+  }
+
+  .rating-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0
+  }
+
+  .rating-reviewer {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text1);
+    flex: 1
+  }
+
+  .stars {
+    color: #F0A500;
+    font-size: 13px;
+    letter-spacing: 1px
+  }
+
+  .rating-comment {
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 2px
+  }
+
+  /* ── MATCHING ── */
+  .match-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px
+  }
+
+  .match-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px
+  }
+
+  .match-search {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    max-width: 500px
+  }
+
+  .match-search-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text1);
+    outline: none
+  }
+
+  .match-search-input:focus {
+    border-color: var(--primary)
+  }
+
+  .filter-btn {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    font-size: 13px;
+    color: var(--text2);
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px
+  }
+
+  .filter-btn i {
+    font-size: 15px
+  }
+
+  .match-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+  }
+
+  .match-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 20px;
+    transition: all .2s;
+    cursor: pointer
+  }
+
+  .match-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(13, 115, 119, .08)
+  }
+
+  .match-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px
+  }
+
+  .match-card-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    flex-shrink: 0
+  }
+
+  .match-card-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 2px
+  }
+
+  .match-card-loc {
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 3px
+  }
+
+  .match-score {
+    margin-left: auto;
+    text-align: center
+  }
+
+  .match-score-num {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--primary)
+  }
+
+  .match-score-label {
+    font-size: 10px;
+    color: var(--text3)
+  }
+
+  .skill-exchange {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    background: var(--surface);
+    border-radius: 8px;
+    margin-bottom: 12px
+  }
+
+  .skill-exchange-item {
+    flex: 1;
+    text-align: center
+  }
+
+  .skill-exchange-type {
+    font-size: 10px;
+    color: var(--text3);
+    margin-bottom: 2px
+  }
+
+  .skill-exchange-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text1)
+  }
+
+  .exchange-arrow {
+    font-size: 14px;
+    color: var(--text3)
+  }
+
+  .match-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 14px
+  }
+
+  .match-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text2);
+    border: 1px solid var(--border)
+  }
+
+  .match-card-footer {
+    display: flex;
+    gap: 8px
+  }
+
+  .mc-btn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all .15s;
+    text-align: center
+  }
+
+  .mc-btn.primary {
+    background: var(--primary);
+    color: #fff
+  }
+
+  .mc-btn.primary:hover {
+    background: #0A5C52
+  }
+
+  .mc-btn.secondary {
+    background: var(--surface);
+    color: var(--text1);
+    border: 1px solid var(--border)
+  }
+
+  .mc-btn.secondary:hover {
+    background: var(--border)
+  }
+
+  /* ── AUTH ── */
+  .auth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 60px)
+  }
+
+  .auth-panel-left {
+    background: var(--primary);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+  }
+
+  .auth-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 12px
+  }
+
+  .auth-tagline {
+    font-size: 16px;
+    color: #9FE1CB;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    font-weight: 300
+  }
+
+  .auth-testimonial {
+    background: rgba(255, 255, 255, .1);
+    border-radius: var(--r-lg);
+    padding: 20px
+  }
+
+  .auth-test-text {
+    font-size: 14px;
+    color: #E1F5EE;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    font-style: italic;
+    font-weight: 300
+  }
+
+  .auth-test-author {
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+
+  .auth-test-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff
+  }
+
+  .auth-test-name {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500
+  }
+
+  .auth-test-role {
+    font-size: 11px;
+    color: #9FE1CB
+  }
+
+  .auth-panel-right {
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white)
+  }
+
+  .auth-form-wrap {
+    width: 100%;
+    max-width: 380px
+  }
+
+  .auth-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 32px;
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 4px
+  }
+
+  .auth-tab {
+    flex: 1;
+    padding: 9px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text2);
+    cursor: pointer;
+    border-radius: 7px;
+    border: none;
+    background: none;
+    transition: all .15s
+  }
+
+  .auth-tab.active {
+    background: var(--white);
+    color: var(--text1);
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .08)
+  }
+
+  .auth-heading {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 4px
+  }
+
+  .auth-sub {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 24px
+  }
+
+  .form-field {
+    margin-bottom: 14px
+  }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text2);
+    margin-bottom: 6px;
+    display: block
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text1);
+    background: var(--white);
+    outline: none;
+    transition: border-color .15s
+  }
+
+  .form-input:focus {
+    border-color: var(--primary)
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--r);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity .15s;
+    font-family: 'DM Sans', sans-serif
+  }
+
+  .form-submit:hover {
+    opacity: .85
+  }
+
+  .form-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+    font-size: 12px;
+    color: var(--text3)
+  }
+
+  .form-divider::before,
+  .form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border)
+  }
+
+  .social-btn {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    font-size: 13px;
+    color: var(--text1);
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all .15s
+  }
+
+  .social-btn:hover {
+    background: var(--surface)
+  }
+
+  .auth-footer-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 20px
+  }
+
+  .auth-footer-text a {
+    color: var(--primary);
+    cursor: pointer
+  }
+
+  .feature-card,
+  .metric,
+  .match-card,
+  .profile-section,
+  .dash-card {
+    transition: .3s;
+  }
+
+  .feature-card:hover,
+  .metric:hover,
+  .match-card:hover,
+  .profile-section:hover,
+  .dash-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .08);
+  }
+
+  .hero-visual {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo" onclick="showPage('landing')">SkillSwap</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('landing')">Home</button>
+    <button class="nav-link" onclick="showPage('match')">Explore</button>
+    <button class="nav-link" onclick="showPage('dash')">Dashboard</button>
+    <button class="nav-link" onclick="showPage('profile')">Profile</button>
+  </div>
+  <button class="nav-cta" onclick="showPage('auth')">Sign In</button>
+  <button class="nav-link" onclick="showPage('ai')">AI Match</button>
+</nav>
+
+<!-- ════ LANDING ════ -->
+<div id="page-landing" class="page active">
+
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow"><i class="ti ti-exchange" aria-hidden="true"></i> Peer-to-Peer Learning</div>
+      <div class="hero-title">
+        Exchange Skills.<br>
+        <span>Learn Smarter with AI</span>
+      </div>
+      <p class="hero-sub">SkillSwap connects people who want to learn with people who want to teach — no money, just
+        mutual growth.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('auth')">Get Started Free</button>
+        <button class="btn-outline" onclick="showPage('match')">Browse Skills</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div style="font-size:12px;font-weight:500;color:var(--text2);margin-bottom:4px">🔥 Recent Matches</div>
+      <div class="skill-card-mini">
+        <div class="skill-avatar" style="background:#E1F5EE;color:var(--primary)">RM</div>
+        <div class="skill-info">
+          <div class="skill-name">Rafiqul M. <span style="color:var(--text3);font-weight:400">teaches</span> Python
+          </div>
+          <div class="skill-tag">wants to learn · UI Design</div>
+        </div>
+        <div class="match-badge">96%</div>
+      </div>
+      <div class="skill-card-mini">
+        <div class="skill-avatar" style="background:#EEF2FF;color:#4F46E5">SN</div>
+        <div class="skill-info">
+          <div class="skill-name">Sadia N. <span style="color:var(--text3);font-weight:400">teaches</span> Figma</div>
+          <div class="skill-tag">wants to learn · Django</div>
+        </div>
+        <div class="match-badge">91%</div>
+      </div>
+      <div class="skill-card-mini">
+        <div class="skill-avatar" style="background:#FEF9E1;color:#B45309">AK</div>
+        <div class="skill-info">
+          <div class="skill-name">Arif K. <span style="color:var(--text3);font-weight:400">teaches</span> Marketing
+          </div>
+          <div class="skill-tag">wants to learn · React</div>
+        </div>
+        <div class="match-badge">88%</div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--text3);padding-top:4px">+1,240 active exchanges this week
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-section">
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-num">8,400+</div>
+        <div class="stat-label">Registered Users</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">320+</div>
+        <div class="stat-label">Skill Categories</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1,240</div>
+        <div class="stat-label">Active Exchanges</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4.8★</div>
+        <div class="stat-label">Avg. User Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="features-inner">
+      <div class="section-label">How it works</div>
+      <div class="section-title">Simple, powerful skill exchange</div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ti ti-user-plus" aria-hidden="true"></i></div>
+          <div class="feature-title">Create your profile</div>
+          <div class="feature-desc">List the skills you can teach and the skills you want to learn. Add your experience
+            level and availability.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ti ti-arrows-exchange" aria-hidden="true"></i></div>
+          <div class="feature-title">Get matched instantly</div>
+          <div class="feature-desc">Our algorithm finds compatible partners based on complementary skills. See match
+            scores and profiles instantly.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ti ti-messages" aria-hidden="true"></i></div>
+          <div class="feature-title">Start exchanging</div>
+          <div class="feature-desc">Message your match, schedule sessions, and start learning together. Track progress
+            and leave reviews.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ti ti-calendar-event" aria-hidden="true"></i></div>
+          <div class="feature-title">Schedule sessions</div>
+          <div class="feature-desc">Built-in scheduling makes it easy to plan sessions at times that work for both
+            parties.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ti ti-star" aria-hidden="true"></i></div>
+          <div class="feature-title">Rate and review</div>
+          <div class="feature-desc">After each exchange, leave a review to help build a trustworthy community of
+            learners.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+          <div class="feature-title">Safe and secure</div>
+          <div class="feature-desc">Verified profiles, encrypted messaging, and a community moderation system keep
+            SkillSwap safe.</div>
+
+
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+
+          <div class="feature-title">
+            AI-Powered Matching
+          </div>
+
+          <div class="feature-desc">
+            Smart recommendations connect users with the most suitable learning partners.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ DASHBOARD ════ -->
+<div id="page-dash" class="page">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px 16px">
+        <div
+          style="width:36px;height:36px;border-radius:50%;background:var(--primary-ultra);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--primary)">
+          MN</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--text1)">Md. Nayeem</div>
+          <div style="font-size:11px;color:var(--text3)">Level 3 · 4.9★</div>
+        </div>
+      </div>
+      <button class="sidebar-item active"><i class="ti ti-layout-dashboard" aria-hidden="true"></i> Overview</button>
+      <button class="sidebar-item" onclick="showPage('match')"><i class="ti ti-users" aria-hidden="true"></i> Find
+        Matches</button>
+      <button class="sidebar-item"><i class="ti ti-messages" aria-hidden="true"></i> Messages <span
+          class="sidebar-badge">3</span></button>
+      <button class="sidebar-item"><i class="ti ti-calendar" aria-hidden="true"></i> Sessions</button>
+      <div class="sidebar-section">My Skills</div>
+      <button class="sidebar-item"><i class="ti ti-book" aria-hidden="true"></i> Teaching</button>
+      <button class="sidebar-item"><i class="ti ti-school" aria-hidden="true"></i> Learning</button>
+      <button class="sidebar-item"><i class="ti ti-history" aria-hidden="true"></i> History</button>
+      <div class="sidebar-section">Account</div>
+      <button class="sidebar-item" onclick="showPage('profile')"><i class="ti ti-user" aria-hidden="true"></i>
+        Profile</button>
+      <button class="sidebar-item"><i class="ti ti-settings" aria-hidden="true"></i> Settings</button>
+    </aside>
+    <main class="dash-main">
+      <div class="dash-header">
+        <div class="dash-title">Good morning, Sajid 👋</div>
+        <div class="dash-sub">You have 2 pending exchange requests and 1 session today.</div>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-label">Active Exchanges</div>
+          <div class="metric-val">4</div>
+          <div class="metric-sub">↑ 1 this week</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Sessions Done</div>
+          <div class="metric-val">17</div>
+          <div class="metric-sub">+3 this month</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Skills Teaching</div>
+          <div class="metric-val">3</div>
+          <div class="metric-sub">Python, Django, Git</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Your Rating</div>
+          <div class="metric-val">4.9</div>
+          <div class="metric-sub">From 12 reviews</div>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-title">Exchange Requests <a>View all</a></div>
+          <div class="request-item">
+            <div class="req-avatar" style="background:#EEF2FF;color:#4F46E5">SN</div>
+            <div class="req-info">
+              <div class="req-name">Sadia Nushrat</div>
+              <div class="req-skill">Offers: UI/UX Design → Wants: Python</div>
+            </div>
+            <div class="req-actions">
+              <button class="req-btn accept">Accept</button>
+              <button class="req-btn decline">Pass</button>
+            </div>
+          </div>
+          <div class="request-item">
+            <div class="req-avatar" style="background:#FEF9E1;color:#B45309">RH</div>
+            <div class="req-info">
+              <div class="req-name">Rezaul Hasan</div>
+              <div class="req-skill">Offers: Video Editing → Wants: Django</div>
+            </div>
+            <div class="req-actions">
+              <button class="req-btn accept">Accept</button>
+              <button class="req-btn decline">Pass</button>
+            </div>
+          </div>
+          <div class="request-item" style="border-bottom:none">
+            <div class="req-avatar" style="background:#FCE7F3;color:#9D174D">MR</div>
+            <div class="req-info">
+              <div class="req-name">Mithila R.</div>
+              <div class="req-skill">Offers: Content Writing → Wants: Git</div>
+            </div>
+            <div class="req-actions">
+              <button class="req-btn accept">Accept</button>
+              <button class="req-btn decline">Pass</button>
+            </div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-title">Upcoming Sessions <a>Schedule</a></div>
+          <div class="session-item">
+            <div class="session-dot" style="background:#0D7377"></div>
+            <div class="session-info">
+              <div class="session-title">Python OOP with Sadia</div>
+              <div class="session-time">Today · 5:00 PM — 6:00 PM</div>
+            </div>
+            <span class="session-status" style="background:var(--primary-ultra);color:var(--primary)">Today</span>
+          </div>
+          <div class="session-item">
+            <div class="session-dot" style="background:#4F46E5"></div>
+            <div class="session-info">
+              <div class="session-title">UI Design basics w/ Arif</div>
+              <div class="session-time">Tomorrow · 7:00 PM</div>
+            </div>
+            <span class="session-status" style="background:#EEF2FF;color:#4F46E5">Upcoming</span>
+          </div>
+          <div class="session-item" style="border-bottom:none">
+            <div class="session-dot" style="background:#B45309"></div>
+            <div class="session-info">
+              <div class="session-title">Django REST APIs with Rezaul</div>
+              <div class="session-time">June 5 · 4:30 PM</div>
+            </div>
+            <span class="session-status" style="background:#FEF9E1;color:#B45309">Scheduled</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ════ PROFILE ════ -->
+<div id="page-profile" class="page">
+  <div class="profile-layout">
+    <div class="profile-hero">
+      <div class="profile-avatar-big">MN</div>
+      <div>
+        <div class="profile-name">Md. Miraj Hossan Sajid</div>
+        <p class="profile-bio">Full-stack developer passionate about teaching Python & Django. Currently learning UI/UX
+          Design and modern frontend frameworks.</p>
+        <div class="profile-meta">
+          <div class="profile-meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i> Dhaka, Bangladesh</div>
+          <div class="profile-meta-item"><i class="ti ti-star-filled" style="color:#F0A500" aria-hidden="true"></i> 4.9
+            rating · 12 reviews</div>
+          <div class="profile-meta-item"><i class="ti ti-calendar" aria-hidden="true"></i> Joined Jan 2025</div>
+          <div class="profile-meta-item"><i class="ti ti-exchange" aria-hidden="true"></i> 17 exchanges done</div>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="profile-edit-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit Profile</button>
+        <button class="btn-primary" style="padding:8px 18px;font-size:13px">Request Exchange</button>
+      </div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-section">
+        <div class="profile-section-title"><i class="ti ti-book-2" aria-hidden="true"></i> Skills I Teach</div>
+        <div>
+          <span class="skill-pill teach"><i class="ti ti-brand-python" style="font-size:12px" aria-hidden="true"></i>
+            Python</span>
+          <span class="skill-pill teach">Django</span>
+          <span class="skill-pill teach">REST APIs</span>
+          <span class="skill-pill teach">Git & GitHub</span>
+          <span class="skill-pill teach">SQL</span>
+          <span class="skill-pill teach">FastAPI</span>
+        </div>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title"><i class="ti ti-school" aria-hidden="true"></i> Skills I Want to Learn</div>
+        <div>
+          <span class="skill-pill learn">UI/UX Design</span>
+          <span class="skill-pill learn">Figma</span>
+          <span class="skill-pill learn">React</span>
+          <span class="skill-pill learn">TypeScript</span>
+          <span class="skill-pill learn">Digital Marketing</span>
+        </div>
+      </div>
+      <div class="profile-section" style="grid-column:1/-1">
+        <div class="profile-section-title"><i class="ti ti-star" aria-hidden="true"></i> Reviews</div>
+        <div class="rating-row">
+          <div>
+            <div class="rating-reviewer">Maria Nushrat</div>
+            <div class="rating-comment">"Sajid explained Python concepts very clearly. Highly recommend!"</div>
+          </div>
+          <div style="text-align:right">
+            <div class="stars">★★★★★</div>
+            <div style="font-size:11px;color:var(--text3)">2 weeks ago</div>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div>
+            <div class="rating-reviewer">Sakib al Hasan</div>
+            <div class="rating-comment">"Great teacher, patient and very knowledgeable about Django."</div>
+          </div>
+          <div style="text-align:right">
+            <div class="stars">★★★★★</div>
+            <div style="font-size:11px;color:var(--text3)">1 month ago</div>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div>
+            <div class="rating-reviewer">Arif Khandaker</div>
+            <div class="rating-comment">"Helped me understand REST APIs in just 2 sessions!"</div>
+          </div>
+          <div style="text-align:right">
+            <div class="stars">★★★★☆</div>
+            <div style="font-size:11px;color:var(--text3)">2 months ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MATCHING ════ -->
+<div id="page-match" class="page">
+  <div class="match-layout">
+    <div class="match-header">
+      <div>
+        <div style="font-size:22px;font-weight:500;color:var(--text1);margin-bottom:2px">Find Skill Matches</div>
+        <div style="font-size:14px;color:var(--text2)">Showing 6 of 124 compatible partners</div>
+      </div>
+      <div class="match-search">
+        <input class="match-search-input" placeholder="Search by skill, name..." />
+        <button class="filter-btn"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i> Filter</button>
+      </div>
+    </div>
+    <div class="match-grid">
+
+      <div class="match-card">
+        <div class="match-card-top">
+          <div class="match-card-avatar" style="background:#EEF2FF;color:#4F46E5">SN</div>
+          <div>
+            <div class="match-card-name">Sadia Nushrat</div>
+            <div class="match-card-loc"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i>Dhaka ·
+              <span style="color:#F0A500">★</span> 4.8</div>
+          </div>
+          <div class="match-score">
+            <div class="match-score-num">96%</div>
+            <div class="match-score-label">match</div>
+          </div>
+        </div>
+        <div class="skill-exchange">
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Offers</div>
+            <div class="skill-exchange-name">UI/UX Design</div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Wants</div>
+            <div class="skill-exchange-name">Python</div>
+          </div>
+        </div>
+        <div class="match-tags"><span class="match-tag">Figma</span><span class="match-tag">Prototyping</span><span
+            class="match-tag">Weekends</span></div>
+        <div class="match-card-footer"><button class="mc-btn primary">Request Exchange</button><button
+            class="mc-btn secondary">View Profile</button></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-card-top">
+          <div class="match-card-avatar" style="background:#FEF9E1;color:#B45309">AK</div>
+          <div>
+            <div class="match-card-name">Arif Khandaker</div>
+            <div class="match-card-loc"><i class="ti ti-map-pin" style="font-size:11px"
+                aria-hidden="true"></i>Chittagong · <span style="color:#F0A500">★</span> 4.7</div>
+          </div>
+          <div class="match-score">
+            <div class="match-score-num">91%</div>
+            <div class="match-score-label">match</div>
+          </div>
+        </div>
+        <div class="skill-exchange">
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Offers</div>
+            <div class="skill-exchange-name">Digital Marketing</div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Wants</div>
+            <div class="skill-exchange-name">Django</div>
+          </div>
+        </div>
+        <div class="match-tags"><span class="match-tag">SEO</span><span class="match-tag">Social Media</span><span
+            class="match-tag">Evenings</span></div>
+        <div class="match-card-footer"><button class="mc-btn primary">Request Exchange</button><button
+            class="mc-btn secondary">View Profile</button></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-card-top">
+          <div class="match-card-avatar" style="background:#FCE7F3;color:#9D174D">MR</div>
+          <div>
+            <div class="match-card-name">Mithila Rahman</div>
+            <div class="match-card-loc"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i>Sylhet ·
+              <span style="color:#F0A500">★</span> 5.0</div>
+          </div>
+          <div class="match-score">
+            <div class="match-score-num">88%</div>
+            <div class="match-score-label">match</div>
+          </div>
+        </div>
+        <div class="skill-exchange">
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Offers</div>
+            <div class="skill-exchange-name">React</div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Wants</div>
+            <div class="skill-exchange-name">FastAPI</div>
+          </div>
+        </div>
+        <div class="match-tags"><span class="match-tag">TypeScript</span><span class="match-tag">Next.js</span><span
+            class="match-tag">Flexible</span></div>
+        <div class="match-card-footer"><button class="mc-btn primary">Request Exchange</button><button
+            class="mc-btn secondary">View Profile</button></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-card-top">
+          <div class="match-card-avatar" style="background:#E1F5EE;color:var(--primary)">TI</div>
+          <div>
+            <div class="match-card-name">Tanvir Islam</div>
+            <div class="match-card-loc"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i>Dhaka ·
+              <span style="color:#F0A500">★</span> 4.6</div>
+          </div>
+          <div class="match-score">
+            <div class="match-score-num">84%</div>
+            <div class="match-score-label">match</div>
+          </div>
+        </div>
+        <div class="skill-exchange">
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Offers</div>
+            <div class="skill-exchange-name">Video Editing</div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Wants</div>
+            <div class="skill-exchange-name">SQL</div>
+          </div>
+        </div>
+        <div class="match-tags"><span class="match-tag">Premiere Pro</span><span class="match-tag">Motion</span><span
+            class="match-tag">Weekdays</span></div>
+        <div class="match-card-footer"><button class="mc-btn primary">Request Exchange</button><button
+            class="mc-btn secondary">View Profile</button></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-card-top">
+          <div class="match-card-avatar" style="background:#EFF6FF;color:#1D4ED8">JA</div>
+          <div>
+            <div class="match-card-name">Jannat Ara</div>
+            <div class="match-card-loc"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i>Rajshahi
+              · <span style="color:#F0A500">★</span> 4.9</div>
+          </div>
+          <div class="match-score">
+            <div class="match-score-num">81%</div>
+            <div class="match-score-label">match</div>
+          </div>
+        </div>
+        <div class="skill-exchange">
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Offers</div>
+            <div class="skill-exchange-name">Content Writing</div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Wants</div>
+            <div class="skill-exchange-name">Git & GitHub</div>
+          </div>
+        </div>
+        <div class="match-tags"><span class="match-tag">Copywriting</span><span class="match-tag">SEO
+            writing</span><span class="match-tag">Mornings</span></div>
+        <div class="match-card-footer"><button class="mc-btn primary">Request Exchange</button><button
+            class="mc-btn secondary">View Profile</button></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-card-top">
+          <div class="match-card-avatar" style="background:#F0FDF4;color:#15803D">RH</div>
+          <div>
+            <div class="match-card-name">Rezaul Hasan</div>
+            <div class="match-card-loc"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i>Dhaka ·
+              <span style="color:#F0A500">★</span> 4.5</div>
+          </div>
+          <div class="match-score">
+            <div class="match-score-num">78%</div>
+            <div class="match-score-label">match</div>
+          </div>
+        </div>
+        <div class="skill-exchange">
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Offers</div>
+            <div class="skill-exchange-name">Photography</div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="skill-exchange-item">
+            <div class="skill-exchange-type">Wants</div>
+            <div class="skill-exchange-name">Python</div>
+          </div>
+        </div>
+        <div class="match-tags"><span class="match-tag">Lightroom</span><span class="match-tag">Portrait</span><span
+            class="match-tag">Weekends</span></div>
+        <div class="match-card-footer"><button class="mc-btn primary">Request Exchange</button><button
+            class="mc-btn secondary">View Profile</button></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ AUTH ════ -->
+<div id="page-auth" class="page">
+  <div class="auth-layout">
+    <div class="auth-panel-left">
+      <div class="auth-brand">SkillSwap</div>
+      <p class="auth-tagline">The platform where skills meet skills — learn anything by teaching what you know.</p>
+      <div class="auth-testimonial">
+        <p class="auth-test-text">"I learned Figma in 3 weeks by teaching Python to a designer. Best exchange I've ever
+          made!"</p>
+        <div class="auth-test-author">
+          <div class="auth-test-avatar">RM</div>
+          <div>
+            <div class="auth-test-name">Rafiqul Mahmud</div>
+            <div class="auth-test-role">Software Developer, Dhaka</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-panel-right">
+      <div class="auth-form-wrap">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+          <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="auth-login">
+          <div class="auth-heading">Welcome back</div>
+          <p class="auth-sub">Sign in to continue your skill exchange journey</p>
+          <div class="form-field"><label class="form-label">Email address</label><input type="email" class="form-input"
+              placeholder="you@example.com" /></div>
+          <div class="form-field"><label class="form-label">Password</label><input type="password" class="form-input"
+              placeholder="••••••••" /></div>
+          <button class="form-submit">Sign In</button>
+          <div class="form-divider">or</div>
+          <button class="social-btn"><i class="ti ti-brand-google" style="font-size:16px" aria-hidden="true"></i>
+            Continue with Google</button>
+          <p class="auth-footer-text">Don't have an account? <a onclick="switchTab('register')">Register free</a></p>
+        </div>
+        <div id="auth-register" style="display:none">
+          <div class="auth-heading">Create account</div>
+          <p class="auth-sub">Join thousands exchanging skills for free</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-field"><label class="form-label">First name</label><input type="text" class="form-input"
+                placeholder="Md." /></div>
+            <div class="form-field"><label class="form-label">Last name</label><input type="text" class="form-input"
+                placeholder="Nayeem" /></div>
+          </div>
+          <div class="form-field"><label class="form-label">Email address</label><input type="email" class="form-input"
+              placeholder="you@example.com" /></div>
+          <div class="form-field"><label class="form-label">Password</label><input type="password" class="form-input"
+              placeholder="Min. 8 characters" /></div>
+          <button class="form-submit">Create Free Account</button>
+          <div class="form-divider">or</div>
+          <button class="social-btn"><i class="ti ti-brand-google" style="font-size:16px" aria-hidden="true"></i>
+            Continue with Google</button>
+          <p class="auth-footer-text">Already have an account? <a onclick="switchTab('login')">Sign in</a></p>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- ════ AI MATCH PAGE ════ -->
+<div id="page-ai" class="page">
+
+  <div style="padding:60px">
+
+    <h1 style="font-size:40px;color:#0D7377">
+      🤖 AI Skill Matching
+    </h1>
+
+    <p style="margin-top:10px;color:#64748b">
+      Find your best learning partner using AI recommendations.
+    </p>
+
+    <div style="
+margin-top:30px;
+background:white;
+padding:25px;
+border-radius:16px;
+border:1px solid #e2e8f0">
+
+      <h3>Recommended Match</h3>
+
+      <h2 style="margin-top:10px">
+        Maria Nushrat Mahia
+      </h2>
+
+      <p>
+        Offers UI/UX Design and wants to learn Python.
+      </p>
+
+      <div style="
+margin-top:15px;
+background:#E1F5EE;
+display:inline-block;
+padding:10px 20px;
+border-radius:10px;
+font-weight:600;
+color:#0D7377">
+        96% Match Score
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer style="background:#0D7377;color:white;padding:50px 80px;margin-top:50px">
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap">
+    <div>
+      <h2>SkillSwap</h2>
+      <p style="margin-top:10px;color:#d1fae5">
+        Learn. Teach. Grow Together.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <p>Home</p>
+      <p>Explore Skills</p>
+      <p>Dashboard</p>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>skillswap@gmail.com</p>
+      <p>Dhaka, Bangladesh</p>
+    </div>
+  </div>
+
+  <hr style="margin:20px 0;border-color:rgba(255,255,255,.2)">
+
+  <p style="text-align:center">
+    © 2026 SkillSwap | Developed by BinaryBrain
+  </p>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const map = {
+      landing: 0,
+      match: 1,
+      dash: 2,
+      profile: 3,
+      ai: 4
+    };
+    const links = document.querySelectorAll('.nav-link');
+    if (map[id] !== undefined) links[map[id]].classList.add('active');
+  }
+  function switchTab(tab) {
+    document.getElementById('auth-login').style.display = tab === 'login' ? 'block' : 'none';
+    document.getElementById('auth-register').style.display = tab === 'register' ? 'block' : 'none';
+    document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+    document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+  }
+</script>
